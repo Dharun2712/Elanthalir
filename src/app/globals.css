@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+/* ── Brand Design Tokens (Stitch Editorial Redesign) ─────── */
+:root {
+  /* Brand Greens */
+  --color-primary: #002617;
+  --color-forest: #123D2A;
+  --color-forest-deep: #0c291c;
+  --color-secondary: #25533d;
+  --color-brand: #176B45;
+  --color-emerald: #228B57;
+
+  /* Paper & Canvas Surfaces */
+  --color-ivory: #FFFDF7;
+  --color-ivory-warm: #fcfaf5;
+  --color-sage: #E5F0E7;
+  --color-sage-light: #eef5ee;
+  --color-pale: #F3F8F2;
+  --color-white: #FFFFFF;
+
+  /* Gold Accents */
+  --color-gold: #D4B36A;
+  --color-gold-light: #ffdf9b;
+  --color-gold-accent: #D4B36A;
+
+  /* Typography Colors */
+  --color-text-dark: #1b1c19;
+  --color-charcoal: #202A23;
+  --color-muted: #4a534c;
+  --color-text-muted: #657168;
+
+  /* Borders & Dividers */
+  --color-border: #d4e0d6;
+  --color-border-light: rgba(18, 61, 42, 0.08);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(18, 61, 42, 0.06);
+  --shadow-md: 0 4px 16px rgba(18, 61, 42, 0.08);
+  --shadow-lg: 0 12px 32px -8px rgba(18, 61, 42, 0.12);
+  --shadow-xl: 0 20px 60px rgba(18, 61, 42, 0.16);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+}
+
+/* ── Base Reset & Mobile Robustness ───────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-noto-sans-tamil), var(--font-inter), system-ui, -apple-system, sans-serif;
+  color: var(--color-text-dark);
+  background-color: var(--color-ivory);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ── Typography Classes ───────────────────────────────── */
+.font-serif-tamil {
+  font-family: var(--font-noto-serif-tamil), Georgia, serif;
+}
+
+.font-sans-tamil {
+  font-family: var(--font-noto-sans-tamil), system-ui, sans-serif;
+}
+
+/* ── Fluid Responsive Heading Scaling ─────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ── Selection ────────────────────────────────────────── */
+::selection {
+  background-color: rgba(212, 179, 106, 0.35);
+  color: var(--color-primary);
+}
+
+/* ── Focus ────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Links ────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ── Fluid Section Containers ─────────────────────────── */
+.section-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 480px) {
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.section-padding {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
+  }
+}
+
+/* ── Buttons (Touch Accessible Target Sizes) ──────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  line-height: 1.5;
+  white-space: nowrap;
+  min-height: 44px; /* Touch target accessibility standard */
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-forest);
+  color: var(--color-white);
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold);
+  color: var(--color-forest-deep);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+  background-color: #0a5232;
+  color: var(--color-white);
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--color-gold);
+  box-shadow: 0 6px 20px rgba(10, 82, 50, 0.25);
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-gold);
+  color: var(--color-forest-deep);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-forest);
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--color-forest);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-forest);
+  color: var(--color-white);
+}
+
+.btn-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.825rem;
+  min-height: 38px;
+}
+
+.btn-lg {
+  padding: 0.875rem 2.25rem;
+  font-size: 1rem;
+  min-height: 48px;
+}
+
+/* ── Editorial Gold & Green Accents ───────────────────── */
+.gold-accent {
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.green-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+}
+
+/* ── Safe Area Helpers ────────────────────────────────── */
+.safe-area-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
